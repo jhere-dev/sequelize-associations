@@ -17,3 +17,7 @@ exports.createPost = async (post) => {
   }
   await postRepository.insertPost(post);
 };
+
+exports.editPost = async (id, postDetails) => {
+  return postRepository.updatePost(id, postDetails);
+};

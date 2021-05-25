@@ -14,3 +14,11 @@ exports.findPostById = async (id) => {
 exports.insertPost = async (post) => {
   return await Post.create(post);
 };
+
+exports.deletePost = async (id) => {
+  return await Post.destroy({ where: { id } });
+};
+
+exports.updatePost = async (id, postDetails) => {
+  return await User.update(postDetails, { where: { id } });
+};
