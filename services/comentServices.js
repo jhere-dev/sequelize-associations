@@ -11,3 +11,7 @@ exports.createComent = async (coment) => {
   }
   await comentRepository.insertComent(coment);
 };
+
+exports.deleteComent = async (id) => {
+  return await comentRepository.deleteComent(id);
+};

@@ -1,8 +1,10 @@
 var express = require("express");
+const adminValidation = require("../middleware/adminValidation");
+const roleValidation = require("../middleware/roleValidation");
 var router = express.Router();
 const userService = require("../services/userService");
 
-router.get("/all", async (req, res) => {
+router.get("/all", roleValidation("admin"), async (req, res) => {
   try {
     const user = await userService.getAllProfiles();
     res.status(200).json(user);
@@ -40,9 +42,9 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.put("/:id", async (req, res) => {
+router.put("/", async (req, res) => {
   try {
-    const { id } = req.params;
+    const { id } = req.user;
     await userService.editProfile(id, req.body);
     res.sendStatus(204);
   } catch (error) {

@@ -19,6 +19,7 @@ exports.deletePost = async (id) => {
   return await Post.destroy({ where: { id } });
 };
 
-exports.updatePost = async (id, postDetails) => {
-  return await User.update(postDetails, { where: { id } });
+exports.editPost = async (id, postDetails) => {
+  delete postDetails.id;
+  return await Post.update(postDetails, { where: { id } });
 };

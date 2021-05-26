@@ -4,6 +4,13 @@ const dbConnection = require("../config/db");
 const User = dbConnection.define(
   "User",
   {
+    id: {
+      primaryKey: true,
+      allowNull: false,
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+    },
+
     email: {
       type: DataTypes.STRING,
       unique: true,
@@ -13,6 +20,9 @@ const User = dbConnection.define(
     },
     name: {
       type: DataTypes.STRING,
+    },
+    role: {
+      type: DataTypes.STRING(10),
     },
   },
   {

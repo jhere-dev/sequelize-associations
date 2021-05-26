@@ -8,8 +8,8 @@ const Coment = dbConnection.define("Coment", {
     defaultValue: DataTypes.UUIDV4,
     allowNull: false,
   },
-  Content: {
-    type: DataTypes.TEXT,
+  content: {
+    type: DataTypes.STRING,
   },
 });
 module.exports = Coment;
